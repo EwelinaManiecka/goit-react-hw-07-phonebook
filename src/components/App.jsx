@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useDispatch } from 'react';
+import { useState } from 'react';
 
 import useLocalStorage from 'hooks/useLocalStorage';
 import ContactForm from './ContactForm/ContactForm';
