@@ -5,24 +5,25 @@ import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
 import { Notification } from 'components/Notification/Notification';
 import css from './ContactList.module.css';
-import { getContacts, getStatusFilter } from 'redux/selectors';
+import { selectContacts, selectStatusFilter } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/selectors';
 
-const getVisibleContacts = (contacts, statusFilter) => {
-  switch (statusFilter) {
-    case statusFilter.active:
-      return contacts.filter(contact => !contact.completed);
-    case statusFilter.completed:
-      return contacts.filter(contact => contact.completed);
-    default:
-      return contacts;
-  }
-};
+// const getVisibleContacts = (contacts, statusFilter) => {
+//   switch (statusFilter) {
+//     case statusFilter.active:
+//       return contacts.filter(contact => !contact.completed);
+//     case statusFilter.completed:
+//       return contacts.filter(contact => contact.completed);
+//     default:
+//       return contacts;
+//   }
+// };
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const statusFilter = useSelector(getStatusFilter);
+  const contacts = useSelector(selectContacts);
+  const statusFilter = useSelector(selectStatusFilter);
   const dispatch = useDispatch();
-  const visibleContacts = getVisibleContacts(contacts, statusFilter);
+  const visibleContacts = selectVisibleContacts(contacts, statusFilter);
 
   const filteredContacts = contacts.filter(contact => {
     return contact.name.toLowerCase().includes(statusFilter.toLowerCase());
