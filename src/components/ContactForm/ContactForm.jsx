@@ -1,26 +1,26 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 // import { addContact } from 'redux/contactsSlice';
-// import { useEffect } from 'react';
-// import { useRef } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 import { addContact } from 'redux/operations';
 import css from './ContactForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
-import { selectContacts } from 'redux/selectors';
+import { getContacts } from 'redux/selectors';
 
-const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
+export const ContactForm = () => {
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  // const isMounted = useRef(false);
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     localStorage.setItem('Contacts', JSON.stringify(contacts));
-  //   } else {
-  //     isMounted.current = true;
-  //   }
-  // }, [contacts]);
+  const isMounted = useRef(false);
+  useEffect(() => {
+    if (isMounted.current) {
+      localStorage.setItem('Contacts', JSON.stringify(contacts));
+    } else {
+      isMounted.current = true;
+    }
+  }, [contacts]);
 
   const formSumbit = event => {
     event.preventDefault();
@@ -78,5 +78,3 @@ const ContactForm = () => {
     </div>
   );
 };
-
-export default ContactForm;

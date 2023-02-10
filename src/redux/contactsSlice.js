@@ -30,7 +30,7 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: {
+  reducers: {
     [fetchContacts.pending]: handlePending,
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
@@ -50,7 +50,7 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        contact => contact.id === action.payload
+        contact => contact.id === action.payload.id
       );
       state.items.splice(index, 1);
     },

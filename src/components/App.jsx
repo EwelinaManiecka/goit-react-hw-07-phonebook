@@ -5,23 +5,23 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 // import useLocalStorage from 'hooks/useLocalStorage';
-import ContactForm from './ContactForm/ContactForm';
+import { ContactForm } from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
+import { Filter } from './Filter/Filter';
 import {
   // getContacts,
   // getStatusFilter,
-  selectError,
-  selectIsLoading,
+  getError,
+  getIsLoading,
 } from 'redux/selectors';
 import css from './App.module.css';
 
-const App = () => {
+export const App = () => {
   // const [contacts, setContacts] = useLocalStorage('contacts');
   // const [filter, setFilter] = useState('');
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -59,12 +59,12 @@ const App = () => {
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm />
+      {isLoading && !error && <p>Loading...</p>}
       <h2>Contacts</h2>
       <Filter />
-      {isLoading && !error && <p>Loading...</p>}
       <ContactList />
     </div>
   );
 };
 
-export default App;
+// export default App;
