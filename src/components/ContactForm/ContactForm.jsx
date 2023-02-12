@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-// import { addContact } from 'redux/contactsSlice';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 

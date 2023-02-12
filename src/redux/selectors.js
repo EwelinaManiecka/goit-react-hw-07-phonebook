@@ -1,5 +1,4 @@
 import { createSelector } from '@reduxjs/toolkit';
-// import { statusFilter } from './constants';
 
 export const getContacts = state => state.contacts.items;
 
