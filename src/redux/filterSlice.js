@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { statusFilter } from './constants';
+// import { statusFilter } from './constants';
 
 const initialState = {
-  status: statusFilter.all,
+  status: '',
 };
 
 const filterSlice = createSlice({

@@ -11,7 +11,10 @@ export const Filter = () => {
   const dispatch = useDispatch();
   // const filter = useSelector(selectStatusFilter);
 
-  const handleFilterChange = filter => dispatch(setStatusFilter(filter));
+  const handleFilterChange = e => {
+    const filterValue = e.target.value;
+    dispatch(setStatusFilter(filterValue));
+  };
 
   // const handleFilter = event => {
   //   dispatch(setStatusFilter(event.target.value));

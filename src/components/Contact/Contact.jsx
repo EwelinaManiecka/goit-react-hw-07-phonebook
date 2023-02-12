@@ -11,8 +11,13 @@ export const Contact = ({ contact }) => {
 
   return (
     <div className={css.wrapper}>
-      <p className={css.text}>{contact.text}</p>
-      <button onClick={handleDelete}></button>
+      <p className={css.text}>
+        {contact.name}: {contact.number}
+      </p>
+
+      <button className={css.btnDelete} type="button" onClick={handleDelete}>
+        Delete
+      </button>
     </div>
   );
 };
