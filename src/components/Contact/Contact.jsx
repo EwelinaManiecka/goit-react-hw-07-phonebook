@@ -6,13 +6,13 @@ import css from './Contact.module.css';
 
 export const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-
+  // const handleAddContact = () => dispatch(addContact(contact))
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
   return (
     <div className={css.wrapper}>
       <p className={css.text}>
-        {contact.name}: {contact.number}
+        {contact.name}: {contact.phone}
       </p>
 
       <button className={css.btnDelete} type="button" onClick={handleDelete}>
